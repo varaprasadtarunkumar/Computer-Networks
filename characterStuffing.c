@@ -1,29 +1,30 @@
-#include <stdio.h>
-#include <string.h>
-int main() {
-    char flag = 'd';   // Flag character
-    //char esc = 'E';    // Escape character
-    char input[100];   // Input string
-    char stuffed[200]; // Stuffed string
-    int i, j = 0;
-
-    printf("Enter the input string: ");
-    gets(input); // Input string
-
-    // Stuffing
-    stuffed[j++] = flag; // Add flag at the beginning
-
-    for (i = 0; i < strlen(input); i++) {
-        if (input[i] == flag ) {
-            stuffed[j++] = flag; // Add escape character
+#include<stdio.h>
+#include<string.h>
+int main(){
+    char input[100],stuffed[200];
+    char flag='d';
+    int i,j=0;
+    printf("Enter the string \n");
+    gets(input);
+    stuffed[j++]=flag; //Addng flag bit at the begining
+    
+    /* stuffed[j++]=flag works as follows
+        stuffed[j]=flag;
+        j=j+1;  */
+        
+    for(i=0;i<strlen(input);i++){
+        if(input[i]==flag){
+            stuffed[j++]=flag;
+            
+  /*  If input character is a flag character, add another flag character
+             stuffed[j] = flag;
+              j = j + 1;
+              */
         }
-        stuffed[j++] = input[i]; // Add input character
+        stuffed[j++]=input[i];
     }
-
-    stuffed[j++] = flag; // Add flag at the end
-    stuffed[j] = '\0';   // Add null character at the end
-
-    printf("Stuffed string: %s\n", stuffed); // Display stuffed string
-
-    return 0;
+    //Adding the flag at the end and incrementing j
+    stuffed[j++]=flag;
+    stuffed[j]="\0";
+    printf("The stuffed string is %s \n",stuffed);
 }
